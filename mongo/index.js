@@ -19,7 +19,7 @@ let UserSchema = mongoose.Schema({ //회원
     password: { type: String }, //비밀번호
     phone: { type: String }, //폰번호
     group: [{
-        id: { type: String }, //id
+        token: { type: String }, //id
     }], //그룹
     cartegory: [{
         image: { type: String }, //id
@@ -30,7 +30,7 @@ let GroupSchema = mongoose.Schema({ //회원
     token: { type: String }, // 토큰
     name: { type: String }, //이름
     members: [{
-        id: { type: String }, //id
+        token: { type: String }, //id
     }], //멤버
     boards: [{
         token: { type: String }, //id

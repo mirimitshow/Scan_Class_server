@@ -29,4 +29,5 @@ app.listen(PORT, function() {
 });
 
 require('./routes/auth/auth')(app, Users);
+require('./routes/group/setGroup')(app, Users, Groups);
 // require('./routes/index')(app);

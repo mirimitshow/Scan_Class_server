@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import config from './config';
 import session from 'express-session';
 import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 
 let app = express();
 
@@ -44,7 +45,9 @@ var options = {
 }
 
 // Initialize swagger-jsdoc -> returns validated swagger spec in json format
-var swaggerSpec = swaggerJSDoc(options)
+const swaggerSpec = swaggerJSDoc(options);
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec)); //Swagger UI 추가
 
 
 //서버 실행
@@ -53,6 +56,7 @@ app.listen(PORT, function() {
     console.log('server running in ' + PORT);
 });
 
+//라우팅
 require('./routes/auth/auth')(app, Users);
 require('./routes/group/setGroup')(app, Users, Groups);
 // require('./routes/index')(app);

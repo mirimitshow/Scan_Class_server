@@ -50,7 +50,7 @@ let BoardSchema = mongoose.Schema({ //회원
 require('./err')(UserSchema, GroupSchema, BoardSchema);
 
 let Users = mongoose.model("users", UserSchema);
-let Groups = mongoose.model("comments", GroupSchema);
+let Groups = mongoose.model("groups", GroupSchema);
 let Boards = mongoose.model("boards", BoardSchema);
 
 export { Users, Groups, Boards };

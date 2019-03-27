@@ -1,12 +1,14 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import config from './config';
-import session from 'express-session';
+import path from 'path';
+// import session from 'express-session';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
 let app = express();
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     limit: '1gb',
@@ -33,7 +35,9 @@ var swaggerDefinition = {
         title: 'Scanus', // Title (required)
         version: '1.0.0', // Version (required)
         description: "This is an Api server for MIRIM IT SHOW entry 'Scanus'. You can find out more about Scanus at https://github.com/mirimitshow.", // Description (optional)
-    }
+    },
+    host: 'localhost:9000',
+    basepath: '/'
 }
 
 // Options for the swagger docs
@@ -47,7 +51,16 @@ var options = {
 // Initialize swagger-jsdoc -> returns validated swagger spec in json format
 const swaggerSpec = swaggerJSDoc(options);
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec)); //Swagger UI 추가
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+app.get('/swagger.json', (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(swaggerSpec);
+});
+
+app.get('/', (req, res) => {
+    res.send("승여나 사랑행");
+});
 
 
 //서버 실행
@@ -56,7 +69,6 @@ app.listen(PORT, function() {
     console.log('server running in ' + PORT);
 });
 
-//라우팅
 require('./routes/auth/auth')(app, Users);
 require('./routes/group/setGroup')(app, Users, Groups);
 // require('./routes/index')(app);

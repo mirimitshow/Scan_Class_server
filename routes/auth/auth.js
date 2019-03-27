@@ -10,16 +10,20 @@ module.exports = (app, Users) => {
                 if (e instanceof ValidationError) return res.status(400).json({ message: e.message });
                 if (e instanceof paramsError) return res.status(400).json({ message: e.message });
             }
-            res.send(user)
+            res.status(200).send(user)
         })
         .post('/signin', async(req, res) => {
             var result = await Users.findOne(req.body)
             if (!result) {
-                res.send("err")
+                res.status(400).json({
+                    message: "login failed"
+                });
             } else {
                 req.session.logined = true;
                 req.session.user_id = result.id;
-                res.send(result)
+                res.status(200).json({
+                    message: "success"
+                });
             }
         })
         .post('/delUser', async(req, res) => {

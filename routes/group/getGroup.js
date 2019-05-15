@@ -16,7 +16,7 @@ module.exports = (app, Users, Groups) => {
                 groups.push(result);
                 cnt++; 
                 if (cnt === rawContent.group.length) {
-                    res.status(200).json(groups);
+                    res.status(200).json({groups: groups});
                 }
             });
         });

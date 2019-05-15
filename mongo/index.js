@@ -30,7 +30,7 @@ let GroupSchema = mongoose.Schema({ //회원
     token: { type: String }, // 토큰
     name: { type: String }, //이름
     members: [{
-        token: { type: String }, //id
+        email: { type: String }, //id
     }], //멤버
     boards: [{
         token: { type: String }, //id

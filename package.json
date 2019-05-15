@@ -6,7 +6,7 @@
     "scripts": {
         "start": "nodemon app.js --exec babel-node",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "set": "npm install --save-dev babel-cli babel-preset-es2015 babel-preset-stage-2"
+        "build": "npm install --save-dev babel-cli babel-preset-es2015 babel-preset-stage-2"
     },
     "dependencies": {
         "body-parser": "~1.15.1",

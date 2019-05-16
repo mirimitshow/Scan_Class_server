@@ -5,7 +5,7 @@ import path from 'path';
 const upload = multer({
     storage: multer.diskStorage({
         destination: function (req, file, cb) {
-            cb(null, 'public/');
+            cb(null, 'public/images/board');
         },
         filename: function (req, file, cb) {
             cb(null, new Date().valueOf() + path.extname(file.originalname));

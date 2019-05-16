@@ -58,11 +58,6 @@ app.get('/swagger.json', (req, res) => {
     res.send(swaggerSpec);
 });
 
-app.get('/', (req, res) => {
-    res.send("승여나 사랑행");
-});
-
-
 //서버 실행
 const PORT = config.PORT || 9000;
 app.listen(PORT, function() {

@@ -2,10 +2,12 @@ import rndstring from 'randomstring'
 import multer from 'multer';
 import path from 'path';
 
+const URL = 'images/board/';
+
 const upload = multer({
     storage: multer.diskStorage({
         destination: function (req, file, cb) {
-            cb(null, 'public/images/board');
+            cb(null, 'public/' + URL);
         },
         filename: function (req, file, cb) {
             cb(null, new Date().valueOf() + path.extname(file.originalname));
@@ -19,7 +21,7 @@ module.exports = (app, Boards) => {
             console.log(req.file);
             board.token = rndstring.generate(25);
             board.image.id = req.file.filename;
-            board.image.url = req.file.path;
+            board.image.url = URL + req.file.filename;
             try {
                 var result = await board.save();
             } catch (e) {

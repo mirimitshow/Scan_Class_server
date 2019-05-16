@@ -21,6 +21,9 @@ let UserSchema = mongoose.Schema({ //회원
     group: [{
         token: { type: String }, //id
     }], //그룹
+    cartegory: [{
+        name: { type: String }, //카테고리 이름
+    }], //카테고리
 });
 
 let GroupSchema = mongoose.Schema({ //회원
@@ -57,11 +60,11 @@ let BoardSchema = mongoose.Schema({ //회원
 });
 
 let ScanSchema = mongoose.Schema({ //스캔 사진
-    email: { type: String }, // 토큰
-    image: {
-        id: { type: String }, //id
-        url: { type: String } //url
-    }, // 사진
+    email: { type: String }, // 이메일
+    cartegory: { type: String }, // 카테고리
+    name: { type: String }, //이름
+    id: { type: String }, //이미지 id
+    url: { type: String } //이미지 url
 });
 
 require('./err')(UserSchema, GroupSchema, BoardSchema, ScanSchema);

@@ -1,6 +1,16 @@
 import multer from 'multer';
-// 기타 express 코드
-const upload = multer({ dest: 'tables/', limits: { fileSize: 5 * 1024 * 1024 } });
+import path from 'path';
+
+const upload = multer({
+    storage: multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, 'public/');
+        },
+        filename: function (req, file, cb) {
+            cb(null, new Date().valueOf() + path.extname(file.originalname));
+        }
+    }),
+});
 
 module.exports = (app, Users, Groups) => {
     app.post('/setTimetable', upload.single('img'), async(req, res) => {

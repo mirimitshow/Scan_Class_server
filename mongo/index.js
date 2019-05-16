@@ -21,9 +21,6 @@ let UserSchema = mongoose.Schema({ //회원
     group: [{
         token: { type: String }, //id
     }], //그룹
-    cartegory: [{
-        image: { type: String }, //id
-    }], //활동 사진
 });
 
 let GroupSchema = mongoose.Schema({ //회원
@@ -59,12 +56,21 @@ let BoardSchema = mongoose.Schema({ //회원
     }, // 사진
 });
 
-require('./err')(UserSchema, GroupSchema, BoardSchema);
+let ScanSchema = mongoose.Schema({ //스캔 사진
+    email: { type: String }, // 토큰
+    image: {
+        id: { type: String }, //id
+        url: { type: String } //url
+    }, // 사진
+});
+
+require('./err')(UserSchema, GroupSchema, BoardSchema, ScanSchema);
 
 let Users = mongoose.model("users", UserSchema);
 let Groups = mongoose.model("groups", GroupSchema);
 let Boards = mongoose.model("boards", BoardSchema);
+let Scans = mongoose.model("scans", ScanSchema);
 
-export { Users, Groups, Boards };
+export { Users, Groups, Boards, Scans };
 
 export default db;

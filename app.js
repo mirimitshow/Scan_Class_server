@@ -24,7 +24,7 @@ app.use(express.session({
 }));
 
 //module setting
-import { Users, Groups, Boards } from './mongo';
+import { Users, Groups, Boards, Scans } from './mongo';
 
 
 // Swagger definition

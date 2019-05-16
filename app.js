@@ -73,4 +73,5 @@ require('./routes/auth/auth')(app, Users);
 require('./routes/group/getGroup')(app, Users, Groups);
 require('./routes/group/setGroup')(app, Users, Groups);
 require('./routes/group/joinGroup')(app, Users, Groups);
+require('./routes/timetable/setTimetable')(app, Users, Groups);
 // require('./routes/index')(app);

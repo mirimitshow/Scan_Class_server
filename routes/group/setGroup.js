@@ -3,6 +3,10 @@ module.exports = (app, Users, Groups) => {
     app.post('/setGroup', async(req, res) => {
         let group = new Groups(req.body);
         group.token = rndstring.generate(25);
+        group.timetable = {
+            "id": "",
+            "url": ""
+        };
         try {
             var result = await group.save();
         } catch (e) {

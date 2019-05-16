@@ -46,13 +46,17 @@ let GroupSchema = mongoose.Schema({ //회원
 });
 
 let BoardSchema = mongoose.Schema({ //회원
+    token: { type: String }, // 토큰
+    group_token: { type: String }, // 그룹토큰
     isNotice: { type: String }, // 공지냐?
     title: { type: String }, // 제목
+    author: { type: String }, // 작성자
     content: { type: String }, // 내용
-    images: [{
+    date: {type: Date, default: Date.now}, //수정 날짜
+    image: {
         id: { type: String }, //id
         url: { type: String } //url
-    }], // 사진
+    }, // 사진
 });
 
 require('./err')(UserSchema, GroupSchema, BoardSchema);

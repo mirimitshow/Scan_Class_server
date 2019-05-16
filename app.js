@@ -70,4 +70,5 @@ require('./routes/group/setGroup')(app, Users, Groups);
 require('./routes/group/joinGroup')(app, Users, Groups);
 require('./routes/timetable/setTimetable')(app, Users, Groups);
 require('./routes/board/setBoard')(app, Boards);
+require('./routes/board/getBoard')(app, Boards);
 // require('./routes/index')(app);

@@ -36,7 +36,7 @@ var swaggerDefinition = {
         version: '1.0.0', // Version (required)
         description: "This is an Api server for MIRIM IT SHOW entry 'Scanus'. You can find out more about Scanus at https://github.com/mirimitshow.", // Description (optional)
     },
-    host: 'localhost:9000',
+    host: process.env.BASE_URL,
     basepath: '/'
 }
 

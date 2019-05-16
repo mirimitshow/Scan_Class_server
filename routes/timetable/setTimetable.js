@@ -16,9 +16,7 @@ const upload = multer({
 
 module.exports = (app, Users, Groups) => {
     app.post('/setTimetable', upload.single('img'), async(req, res) => {
-        console.log(req.file); 
         let group = await Groups.findOne({ token: req.body.token });
-        console.log(group); 
         group.timetable.id = req.file.filename;
         group.timetable.url = URL + req.file.filename;
         // group.timetable = rndstring.generate(25);

@@ -25,7 +25,7 @@ app.use(express.session({
 
 //module setting
 import { Users, Groups, Boards, Scans } from './mongo';
-
+require('./func')
 
 // Swagger definition
 // You can set every attribute except paths and swagger
@@ -71,4 +71,5 @@ require('./routes/group/joinGroup')(app, Users, Groups);
 require('./routes/timetable/setTimetable')(app, Users, Groups);
 require('./routes/board/setBoard')(app, Boards);
 require('./routes/board/getBoard')(app, Boards);
+require('./routes/scan/setScan')(app, Users, Scans);
 // require('./routes/index')(app);

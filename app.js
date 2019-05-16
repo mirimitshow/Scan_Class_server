@@ -73,4 +73,5 @@ require('./routes/board/setBoard')(app, Boards);
 require('./routes/board/getBoard')(app, Boards);
 require('./routes/scan/setScan')(app, Users, Scans);
 require('./routes/scan/getScan')(app, Scans);
+require('./routes/user/getUser')(app, Users);
 // require('./routes/index')(app);

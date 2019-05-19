@@ -12,11 +12,13 @@ module.exports = (app, Users, Groups) => {
             if(err) res.status(400).json({ message: err });
             else if(!rawContent) res.status(400).json({ message: 'No User Found' });
             await rawContent.group.forEach(async element => {
-                let result = await Groups.find({ token: element.token });
+                let result = await Groups.findOne({ token: element.token });
                 groups.push(result);
+                console.log(result);
                 cnt++; 
                 if (cnt === rawContent.group.length) {
-                    res.status(200).json({groups: groups});
+                    res.status(200).json(groups);
+                    console.log(groups);
                 }
             });
         });

@@ -9,7 +9,7 @@ module.exports = (app, Boards) => {
         await Boards.find({ group_token: token }, async (err, rawContent)=>{
             if(err) res.status(400).json({ message: err });
             else if(!rawContent) res.status(204).json({ message: 'No Board Found' });
-            res.status(200).json({boards: rawContent});
+            res.status(200).json(rawContent);
         });
     })
     .post('/aaBoard', async(req, res) => {

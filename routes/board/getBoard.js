@@ -11,5 +11,9 @@ module.exports = (app, Boards) => {
             else if(!rawContent) res.status(204).json({ message: 'No Board Found' });
             res.status(200).json({boards: rawContent});
         });
+    })
+    .post('/aaBoard', async(req, res) => {
+        var result = await Boards.find();
+        res.send(result);
     });
 }

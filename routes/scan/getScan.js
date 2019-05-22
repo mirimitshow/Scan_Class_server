@@ -4,4 +4,8 @@ module.exports = (app, Scans) => {
         if (!result) res.status(209).json({ message: 'No Scans Found' });
         else res.status(200).json({scans: result});
     })
+    .post('/aaScan', async(req, res) => {
+        var result = await Scans.find();
+        res.send(result);
+    });
 }

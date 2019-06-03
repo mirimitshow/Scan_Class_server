@@ -39,10 +39,7 @@ let GroupSchema = mongoose.Schema({ //회원
         id: { type: String }, //id
         url: { type: String } //url
     }, //시간표
-    image: {
-        id: { type: String }, //id
-        url: { type: String } //url
-    } // 사진
+    color: { type: String } // 사진
 });
 
 let BoardSchema = mongoose.Schema({ //회원
